@@ -1,7 +1,0 @@
-#Wed Jun 28 11:11:29 EDT 2017
-base.0=C\:\\Users\\Administrator\\AndroidStudioProjects\\WalkingBob\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_0b9c301b68a0860c124210e0f998264b2017c79a
-renamed.1=classes2.dex
-renamed.0=classes.dex
-file.1=C\:\\Users\\Administrator\\AndroidStudioProjects\\WalkingBob\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_20a626d9af0e24b2171a5bf37132e45ef1555a46\\classes.dex
-base.1=C\:\\Users\\Administrator\\AndroidStudioProjects\\WalkingBob\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_20a626d9af0e24b2171a5bf37132e45ef1555a46
-file.0=C\:\\Users\\Administrator\\AndroidStudioProjects\\WalkingBob\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_0b9c301b68a0860c124210e0f998264b2017c79a\\classes.dex

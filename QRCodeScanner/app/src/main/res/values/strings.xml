@@ -1,5 +1,0 @@
-<resources>
-    <string name="app_name">QRCodeScanner</string>
-    <string name="button">Scan QR Code</string>
-    <string name="unable_to_invoke">Unable to invoke camera without permission</string>
-</resources>
