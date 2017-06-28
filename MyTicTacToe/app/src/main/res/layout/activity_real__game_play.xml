@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+
+    <Button
+        android:id="@+id/restart_Button"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/restartButton"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/holo_blue_light"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteY="384dp"
+        android:layout_above="@+id/back_Button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp" />
+
+    <Button
+        android:id="@+id/back_Button"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/backButton"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/holo_blue_light"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="115dp"
+        android:layout_alignBaseline="@+id/quit_Button"
+        android:layout_alignBottom="@+id/quit_Button"
+        android:layout_alignStart="@+id/player_id1"
+        android:layout_marginStart="23dp" />
+
+    <Button
+        android:id="@+id/quit_Button"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/quitButton"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@android:color/holo_blue_light"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="205dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="14dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/player_id2" />
+
+    <TextView
+        android:id="@+id/player_id1"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="83dp"
+        android:text="@string/player1"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/restart_Button"
+        android:layout_marginTop="38dp" />
+
+    <TextView
+        android:id="@+id/player_id2"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="83dp"
+        android:text="@string/player2"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteY="37dp"
+        android:layout_alignBaseline="@+id/player_id1"
+        android:layout_alignBottom="@+id/player_id1"
+        android:layout_toEndOf="@+id/restart_Button" />
+
+    <TableLayout
+        android:id="@+id/gameTableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/cell_shape"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498">
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button_1_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:text="@string/empty" />
+
+            <Button
+                android:id="@+id/button_1_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:text="@string/empty" />
+
+            <Button
+                android:id="@+id/button_1_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:text="@string/empty" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button_2_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:text="@string/empty" />
+
+            <Button
+                android:id="@+id/button_2_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:text="@string/empty" />
+
+            <Button
+                android:id="@+id/button_2_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:text="@string/empty" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button_3_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:text="@string/empty" />
+
+            <Button
+                android:id="@+id/button_3_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:text="@string/empty" />
+
+            <Button
+                android:id="@+id/button_3_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cell_shape"
+                android:text="@string/empty" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/player1_symbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:text="@string/option_x"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/player_id1"
+        android:layout_alignStart="@+id/back_Button" />
+
+    <TextView
+        android:id="@+id/player2_symbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/option_o"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/player1_symbol"
+        android:layout_alignBottom="@+id/player1_symbol"
+        android:layout_alignEnd="@+id/quit_Button" />
+
+
+</RelativeLayout>
