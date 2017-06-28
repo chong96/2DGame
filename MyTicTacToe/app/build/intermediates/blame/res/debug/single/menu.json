@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\MyTicTacToe\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_main.xml",
+        "source": "C:\\Users\\Administrator\\AndroidStudioProjects\\MyTicTacToe\\app\\src\\main\\res\\menu\\menu_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\MyTicTacToe\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_tictactoe.xml",
+        "source": "C:\\Users\\Administrator\\AndroidStudioProjects\\MyTicTacToe\\app\\src\\main\\res\\menu\\menu_tictactoe.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\AndroidStudioProjects\\MyTicTacToe\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_cootie.xml",
+        "source": "C:\\Users\\Administrator\\AndroidStudioProjects\\MyTicTacToe\\app\\src\\main\\res\\menu\\menu_cootie.xml"
+    }
+]
