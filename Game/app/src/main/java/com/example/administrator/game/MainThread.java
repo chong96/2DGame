@@ -4,9 +4,6 @@ import android.graphics.Canvas;
 import android.provider.Settings;
 import android.view.SurfaceHolder;
 
-/**
- * Created by Administrator on 6/28/2017.
- */
 
 public class MainThread extends Thread {
     private int FPS = 30;
@@ -32,6 +29,7 @@ public class MainThread extends Thread {
         int frameCount = 0;
         long targetTime = 1000 / FPS;
 
+        //if the game is running
         while (running) {
             startTime = System.nanoTime();
             canvas = null;
@@ -51,9 +49,12 @@ public class MainThread extends Thread {
                     } catch (Exception e) {}
                 }
             }
+
+            //calculate time between frames
             timeMillis = (System.nanoTime() - startTime) / 1000000;
             waitTime = targetTime - timeMillis;
 
+            //try to delay frames so that it is 30 fps
             try {
                 this.sleep(waitTime);
             } catch (Exception e){}

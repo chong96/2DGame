@@ -3,7 +3,6 @@ package com.example.administrator.game;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.test.suitebuilder.annotation.Smoke;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -29,15 +28,20 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         //add callback to surface holder to intercept events
         getHolder().addCallback(this);
 
+        //make new thread where game will be run on
         thread = new MainThread(getHolder(), this);
+        //makes it able to process actions
         setFocusable(true);
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
 
+        //make background variable
         bg = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.grassbg1));
+        //make helicopter variable
         player = new Player(BitmapFactory.decodeResource(getResources(), R.drawable.helicopter), 65, 25, 3);
+        //make array list to hold smoke balls
         smoke = new ArrayList<Smokepuff>();
 
         smokeStartTimer = System.nanoTime();
@@ -58,6 +62,7 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
         boolean retry = true;
         int counter = 0;
+        //try to stop game
         while (retry && counter < 1000) {
             counter++;
             try {
@@ -74,6 +79,7 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        //if player has finger down, make helicopter go up
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             if (!player.getPlaying()) {
                 player.setPlaying(true);
@@ -83,6 +89,7 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             }
             return true;
         }
+        //vice versa ^^
         if (event.getAction() == MotionEvent.ACTION_UP) {
             player.setUp(false);
             return true;
@@ -92,18 +99,24 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void update() {
+        //update the view of both background and player
         if (player.getPlaying()) {
             bg.update();
             player.update();
 
+            //calculate time in between smoke puffs
             long elapsed = (System.nanoTime() - smokeStartTimer)/1000000;
+            //add a new smoke every time period
             if (elapsed > 120) {
                 smoke.add(new Smokepuff(player.getX(),player.getY()+10));
+                //reset smoke timer
                 smokeStartTimer = System.nanoTime();
             }
 
+            //check to see if smoke puffs need to be deleted
             for (int i = 0; i < smoke.size(); i++) {
                 smoke.get(i).update();
+                //if off the screen, delete it
                 if (smoke.get(i).getX() < -10) {
                     smoke.remove(i);
                 }
