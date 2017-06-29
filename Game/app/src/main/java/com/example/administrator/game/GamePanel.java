@@ -3,12 +3,14 @@ package com.example.administrator.game;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
@@ -17,10 +19,13 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     public static final int HEIGHT = 480;
     public static final int MOVESPEED = -5;
     private long smokeStartTimer;
+    private long missileStartTimer;
     private MainThread thread;
     private Background bg;
     private Player player;
     private ArrayList<Smokepuff> smoke;
+    private ArrayList<Missile> missiles;
+    private Random rand = new Random();
 
     public GamePanel(Context context) {
         super(context);
@@ -43,9 +48,11 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         player = new Player(BitmapFactory.decodeResource(getResources(), R.drawable.helicopter), 65, 25, 3);
         //make array list to hold smoke balls
         smoke = new ArrayList<Smokepuff>();
+        //make array list to hold missiles
+        missiles = new ArrayList<Missile>();
 
         smokeStartTimer = System.nanoTime();
-
+        missileStartTimer = System.nanoTime();
 
         //we can safely start game loop
         thread.setRunning(true);
@@ -104,6 +111,32 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             bg.update();
             player.update();
 
+            long missilesElapsed = (System.nanoTime() - missileStartTimer)/1000000;
+            //decide on how often missiles come
+            if (missilesElapsed > (2000 - player.getScore()/4)) {
+                //first missile always down the middle
+                if (missiles.size() == 0) {
+                    missiles.add(new Missile(BitmapFactory.decodeResource(getResources(), R.drawable.missile), WIDTH + 10, HEIGHT / 2, 45, 15, player.getScore(), 13));
+                } else {
+                    missiles.add(new Missile(BitmapFactory.decodeResource(getResources(), R.drawable.missile), WIDTH + 10, (int) ((rand.nextDouble() * (HEIGHT))), 45, 15, player.getScore(), 13 ));
+                }
+                missileStartTimer = System.nanoTime();
+            }
+
+            for (int i = 0; i < missiles.size(); i++) {
+                missiles.get(i).update();
+                //remove missile and end game
+                if (collision(missiles.get(i),player)) {
+                    missiles.remove(i);
+                    player.setPlaying(false);
+                    break;
+                }
+                //remove missile if miss
+                if (missiles.get(i).getX() < -100) {
+                    missiles.remove(i);
+                }
+            }
+
             //calculate time in between smoke puffs
             long elapsed = (System.nanoTime() - smokeStartTimer)/1000000;
             //add a new smoke every time period
@@ -123,6 +156,14 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             }
         }
     }
+
+    public boolean collision(GameObject a, GameObject b) {
+        //check to see if the missile hit
+        if (Rect.intersects(a.getRectangle(),b.getRectangle())) {
+            return true;
+        }
+        return false;
+    }
     @Override
     public void draw(Canvas canvas) {
 
@@ -135,8 +176,13 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             canvas.scale(scaleFactorX,scaleFactorY);
             bg.draw(canvas);
             player.draw(canvas);
+            //draw smokepuffs
             for (Smokepuff sp : smoke) {
                 sp.draw(canvas);
+            }
+            //draw missiles
+            for (Missile m : missiles) {
+                m.draw(canvas);
             }
 
             canvas.restoreToCount(savedState);
