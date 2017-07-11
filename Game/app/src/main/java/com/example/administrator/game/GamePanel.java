@@ -321,12 +321,13 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
     public void updateTopBorder() {
         //every 50 points, insert randomly placed bottom block to break patter
-        if (player.getScore() % 50 == 0) {
+        /*if (player.getScore() % 50 == 0) {
             topBorder.add(new TopBorder(BitmapFactory.decodeResource(getResources(), R.drawable.brick),
                     topBorder.get(topBorder.size() - 1).getX()+20, 0, (int)((rand.nextDouble() * maxBorderHeight) + 1)));
-        }
+        }*/
         for (int i = 0; i < topBorder.size(); i++) {
             topBorder.get(i).update();
+
             if (topBorder.get(i).getX() < -20) {
                 topBorder.remove(i);
                 //remove element in array list, replace with new one
@@ -355,10 +356,10 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
     public void updateBottomBorder() {
         //every 40 points, insert randomly placed top block to break pattern
-        if (player.getScore() % 40 == 0) {
+        /*if (player.getScore() % 40 == 0) {
             bottomBorder.add(new BottomBorder(BitmapFactory.decodeResource(getResources(), R.drawable.brick),
                     bottomBorder.get(bottomBorder.size()-1).getX()+20,(int)((rand.nextDouble() * maxBorderHeight) + (HEIGHT - maxBorderHeight))));
-        }
+        }*/
 
         //update bottom border
         for (int i = 0; i < bottomBorder.size(); i++) {
@@ -369,11 +370,11 @@ class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                 bottomBorder.remove(i);
 
 
-                if (bottomBorder.get(bottomBorder.size() - 1).getY() >= HEIGHT - maxBorderHeight) {
+                if (bottomBorder.get(bottomBorder.size() - 1).getY() <= HEIGHT - maxBorderHeight) {
                     bottomDown = true;
                 }
 
-                if (bottomBorder.get(bottomBorder.size() - 1).getY() <= HEIGHT - minBorderHeight) {
+                if (bottomBorder.get(bottomBorder.size() - 1).getY() >= HEIGHT - minBorderHeight) {
                     bottomDown = false;
                 }
 
